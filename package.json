@@ -1,0 +1,33 @@
+{
+  "name": "vue3-monitor",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.6.2",
+    "echarts": "^5.4.3",
+    "echarts-liquidfill": "^3.1.0",
+    "element-plus": "^2.4.3",
+    "md5": "^2.3.0",
+    "pinia": "^2.1.7",
+    "vue": "^3.3.4",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@iconify-json/ep": "^1.1.13",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "pinia-plugin-persist": "^1.0.0",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "sass": "^1.69.5",
+    "unplugin-auto-import": "^0.17.1",
+    "unplugin-icons": "^0.18.0",
+    "unplugin-vue-components": "^0.25.2",
+    "vite": "^4.4.5"
+  }
+}
