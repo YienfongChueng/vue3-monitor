@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Weather></Weather>
         <!-- 第一行 -->
         <div class="module-box">
             <div class="box" v-for="item in listBox" :key="item.id">
@@ -51,6 +52,7 @@ import { ref,shallowRef,onMounted } from 'vue'
 import {ChromeFilled,TakeawayBox,LocationFilled,Opportunity,PieChart} from '@element-plus/icons-vue'
 import Chart from './components/chart.vue'
 import MyMap from './components/myMap.vue'
+import Weather from './components/weather.vue'
 import { useLiquidFill } from './options/liquidFill.js'
 import { useLineBar } from './options/lineBar.js'
 import { usePie } from './options/pie.js'
