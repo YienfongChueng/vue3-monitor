@@ -9,7 +9,16 @@ export const usePermissionStore = defineStore('permission', {
 
     }),
     getters: {
-
+        buttonPermissionList: state => {
+            let perList = []
+            state.originMenus.map(item => {
+                const userPermission = item.userPermission
+                userPermission && userPermission.map(p => {
+                    perList.push(item.name + ':' + p)
+                })
+            })
+            return perList
+        }
     },
     actions: {
         setMenus(arr) {

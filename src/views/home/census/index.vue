@@ -1,4 +1,5 @@
 <template>
+  <div>
     <div class="module-box">
         <el-card class="analysis-box">
             <div class="titleText">{{validData?.name}}</div>
@@ -10,8 +11,9 @@
         </el-card>
     </div>
     <el-card class="charts">
-        <Chart height="300px" v-if="!isLoad" :option="option"></Chart>
+        <Chart height="300px" v-if="!isLoad"  :option="option"></Chart>
     </el-card>
+  </div>
 </template>
 
 <script setup>
@@ -22,17 +24,19 @@ const validData = ref({})
 const invalidData = ref({})
 const option = ref({})
 const isLoad = ref(true)
+const data = ref({})
 
-onMounted(()=> {
+// onMounted(()=> {
     getData()
+// })
+onMounted(()=> {
+  console.log('父组件mounted')
 })
 
-async function getData() {
-    const {data: {data}} = await censusStatCar()
-    isLoad.value = false
+const _wrapData = (data)=> {
     validData.value = data.valid
     invalidData.value = data.invalid
-    option.value = getOption([
+    const result =  [
         {
             name: validData.value.name,
             value: validData.value.value
@@ -41,7 +45,15 @@ async function getData() {
             name: invalidData.value.name,
             value: invalidData.value.value
         }
-    ])
+    ]
+    return result
+
+}
+async function getData() {
+  console.log('getData')
+    const {data: {data}} = await censusStatCar()
+    isLoad.value = false
+    option.value = getOption(_wrapData(data))
 }
 function getOption(data) {
     return {

@@ -8,8 +8,7 @@ let inglat = ref('');
 function initMap() {
   AMapLoader.load({
     key: apiKey  //申请好的开发者key,首次调用load时填入
-  })
-    .then(AMap => {
+  }).then(AMap => {
       map.value = new AMap.Map('container', {
         resizeEnable: true, //是否监控地图容器尺寸变化
         zoom: 13, //初始化地图层级
@@ -21,10 +20,7 @@ function initMap() {
         ],
         center: [116.397428, 39.90923] //初始化地图中心点
       });
-
-
-    })
-    .catch(err => {
+    }).catch(err => {
       console.log(err)
     })
 }

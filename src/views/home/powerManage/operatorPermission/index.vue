@@ -1,36 +1,38 @@
 <template>
-    <MyTable 
-        :tableData="tableData"
-        :columns="columns"
-        :hasPagination="false"
-        :highlightCurrentRow="false">
-            <template #operator="{slotProps}">
-                <el-button type="success" @click="handleAuth(slotProps)">授权</el-button>
-            </template>
-    </MyTable>
-    <!-- 授权弹窗 -->
-    <MyDialog
-        v-model:visible="dialogVisible"
-        :title="'授权'"
-        :showBtn="false"
-       >
-        <el-tree
-            :data="menuData"
-            node-key="id"
-            default-expand-all
-            :expand-on-click-node="false">
-            <template #default="{ node, data }">
-                <span class="custom-tree-node">
-                    <span class="custom-tree-node__label">{{ node.label }}</span>
-                    <span class="custom-tree-node__oper" v-if="data.permission && data.permission.length > 0">
-                        <el-checkbox-group v-model="data.userPermission">
-                            <el-checkbox v-for="(v,i) in data.permission" :key="i" :label="v.label" @change="(val) => checkboxChange(val,data,v)"/>
-                        </el-checkbox-group>
+    <div>
+        <MyTable 
+            :tableData="tableData"
+            :columns="columns"
+            :hasPagination="false"
+            :highlightCurrentRow="false">
+                <template #operator="{slotProps}">
+                    <el-button type="success" @click="handleAuth(slotProps)">授权</el-button>
+                </template>
+        </MyTable>
+        <!-- 授权弹窗 -->
+        <MyDialog
+            v-model:visible="dialogVisible"
+            :title="'授权'"
+            :showBtn="false"
+           >
+            <el-tree
+                :data="menuData"
+                node-key="id"
+                default-expand-all
+                :expand-on-click-node="false">
+                <template #default="{ node, data }">
+                    <span class="custom-tree-node">
+                        <span class="custom-tree-node__label">{{ node.label }}</span>
+                        <span class="custom-tree-node__oper" v-if="data.permission && data.permission.length > 0">
+                            <el-checkbox-group v-model="data.userPermission">
+                                <el-checkbox v-for="(v,i) in data.permission" :key="i" :label="v.label" @change="(val) => checkboxChange(val,data,v)"/>
+                            </el-checkbox-group>
+                        </span>
                     </span>
-                </span>
-            </template>
-        </el-tree>
-    </MyDialog>
+                </template>
+            </el-tree>
+        </MyDialog>
+    </div>
 </template>
 
 <script setup>

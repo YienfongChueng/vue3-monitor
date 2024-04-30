@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { ref,shallowRef,onMounted } from 'vue'
+import { ref,shallowRef,onMounted,onActivated,onDeactivated } from 'vue'
 import {ChromeFilled,TakeawayBox,LocationFilled,Opportunity,PieChart} from '@element-plus/icons-vue'
 import Chart from './components/chart.vue'
 import MyMap from './components/myMap.vue'
@@ -64,6 +64,14 @@ import { apiUserInfo } from '@/api/modules/user'
 //         console.log(res)
 //     })
 // })
+
+onActivated(()=> {
+    console.log('onActivated')
+})
+
+onDeactivated(()=> {
+    console.log('onDeactivated')
+})
 
 const listBox = shallowRef([
     {id:1,title: '电量监控',icon: ChromeFilled},

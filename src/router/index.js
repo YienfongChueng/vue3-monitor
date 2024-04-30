@@ -27,6 +27,28 @@ export const routes = [
         redirect: '/index',
         children:[]
     },
+    {
+        path: '/layout1',
+        name:'layout1',
+        component: ()=>import('@/layout/index.vue'),
+        children:[
+            {
+                path: '/map1',
+                name: 'map1',
+                component:()=> import('@/views/home/mapLocation/index1.vue')
+            },
+            {
+                path: '/map2',
+                name: 'map2',
+                component:()=> import('@/views/home/mapLocation/index2.vue')
+            },
+            {
+                path: '/map3',
+                name: 'map3',
+                component:()=> import('@/views/home/mapLocation/index3.vue')
+            }
+        ]
+    },
 ]
 
 const router = createRouter({

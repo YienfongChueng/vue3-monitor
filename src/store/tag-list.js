@@ -12,7 +12,7 @@ export const useTagStore = defineStore('tag',{
         ]
     }),
     getters: {
-        tagListGetter: state=> state.tagList
+        cacheView: state=> state.tagList.map(d => d.name)
     },
     actions: {
         addTag(item) {

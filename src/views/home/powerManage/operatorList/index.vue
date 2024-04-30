@@ -1,51 +1,53 @@
 <template>
-    <el-card class="container-wrap">
-        <div class="btn-list">
-            <el-button type="success" @click="dialogVisible = true">添加操作员</el-button>
-        </div>
-        <MyTable 
-        :tableData="tableData"
-        :columns="columns"
-        :total="total"
-        :currentPage="listQuery.pageNo"
-        :pageSize="listQuery.pageSize"
-        :highlightCurrentRow="false"
-        @changeTableData="changeTableData">
-            <template #operator="{slotProps}">
-                <el-button type="danger" @click="handleDel(slotProps)">删除</el-button>
-            </template>
-        </MyTable>
-    </el-card>
-    <!-- 新增操作员 -->
-    <MyDialog
-        v-model:visible="dialogVisible"
-        :title="'新增操作员'"
-        :btnText="'确定'"
-        @confirm="handleConfirm(ruleFormRef)">
-        <el-form 
-            ref="ruleFormRef"
-            :model="ruleForm"
-            status-icon
-            :rules="rules"
-            label-width="120px" >
-           <el-form-item label="用户名" prop="account">
-                <el-input v-model ="ruleForm.account" placeholder="用户名"/>
-            </el-form-item>
-            
-            <el-form-item label="密码" prop="password">
-                <el-input v-model="ruleForm.password" type="password" autocomplete="off" placeholder="密码"/>
-            </el-form-item>
-            
-            <el-form-item label="确认密码" prop="password2">
-                <el-input
-                v-model="ruleForm.password2"
-                type="password"
-                autocomplete="off"
-                placeholder="确认密码"
-                />
-            </el-form-item>
-        </el-form>
-    </MyDialog>
+    <div>
+        <el-card class="container-wrap">
+            <div class="btn-list">
+                <el-button type="success" @click="dialogVisible = true">添加操作员</el-button>
+            </div>
+            <MyTable 
+            :tableData="tableData"
+            :columns="columns"
+            :total="total"
+            :currentPage="listQuery.pageNo"
+            :pageSize="listQuery.pageSize"
+            :highlightCurrentRow="false"
+            @changeTableData="changeTableData">
+                <template #operator="{slotProps}">
+                    <el-button type="danger" @click="handleDel(slotProps)">删除</el-button>
+                </template>
+            </MyTable>
+        </el-card>
+        <!-- 新增操作员 -->
+        <MyDialog
+            v-model:visible="dialogVisible"
+            :title="'新增操作员'"
+            :btnText="'确定'"
+            @confirm="handleConfirm(ruleFormRef)">
+            <el-form 
+                ref="ruleFormRef"
+                :model="ruleForm"
+                status-icon
+                :rules="rules"
+                label-width="120px" >
+               <el-form-item label="用户名" prop="account">
+                    <el-input v-model ="ruleForm.account" placeholder="用户名"/>
+                </el-form-item>
+                
+                <el-form-item label="密码" prop="password">
+                    <el-input v-model="ruleForm.password" type="password" autocomplete="off" placeholder="密码"/>
+                </el-form-item>
+                
+                <el-form-item label="确认密码" prop="password2">
+                    <el-input
+                    v-model="ruleForm.password2"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="确认密码"
+                    />
+                </el-form-item>
+            </el-form>
+        </MyDialog>
+    </div>
 </template>
 
 <script setup>

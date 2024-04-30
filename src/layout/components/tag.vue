@@ -10,6 +10,7 @@
                 @click="handleJump(tag)"
                 @close="handleClose(tag,index)"
             >
+                <!-- tips：此处也可以直接使用router-link，进行跳转路由，而不用写handleJump方法 -->
                 {{ tag?.meta?.title }}
             </el-tag>
         </el-scrollbar>

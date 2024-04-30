@@ -19,13 +19,13 @@
                 :show-overflow-tooltip="item.showOverflowTooltip === false ? false : true"
                 :width="item.width"
                 :fixed="item.fixed"
-                :type="item.type"
+                :type="item.type" 
                 :sortable="item.sortable"
                 :selectable="item.selectableFn">
-                <!-- type 对应列的类型。 如果设置了selection则显示多选框； 
+                <!-- type 对应列的类型: selection / index / expand
+                如果设置了selection则显示多选框； 
                 如果设置了 index 则显示该行的索引（从 1 开始计算）； 
-                如果设置了 expand 则显示为一个可展开的按钮
-                selection / index / expand -->
+                如果设置了 expand 则显示为一个可展开的按钮 -->
                 <template #default="{row, column, $index}" v-if="item.type === 'index'">
                     {{getIndex($index)}}
                 </template>
@@ -142,6 +142,7 @@ let {
     layout,
     small
 } = toRefs(props)
+
 
 const emit = defineEmits(['rowClick','selectChange','changeTableData','update:currentPage','update:pageSize'])
 // 当某一行被点击时会触发该事件
