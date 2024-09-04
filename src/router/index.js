@@ -7,8 +7,9 @@ import { initRoutes } from '@/utils'
 
 export const constantRoutes = [
     {
-        path: '/layout1',
-        name:'layout1',
+        path: '/demo',
+        name:'demo',
+        meta: {title: 'demo'},
         component: ()=>import('@/layout/index.vue'),
         children:[
             {

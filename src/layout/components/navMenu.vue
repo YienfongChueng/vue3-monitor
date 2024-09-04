@@ -20,8 +20,7 @@ import { constantRoutes } from '@/router'
 const route = useRoute()
 const permissionStore = usePermissionStore()
 const navList = ref([])
-const constantsRoutes = constantRoutes[0].children
-navList.value = [...permissionStore.routes,...constantsRoutes]
+navList.value = [...permissionStore.routes,...constantRoutes]
 
 const handleOpen = ()=> {
     console.log("handleOpen")
