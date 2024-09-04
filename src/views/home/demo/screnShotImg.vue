@@ -186,6 +186,31 @@ onMounted(() => {
  * HTMLCanvasElement.toDataURL() 方法返回一个包含图片展示的 data URI
  * HTMLCanvasElement.toBlob() 方法创造 Blob 对象，用以展示 canvas 上的图片
  */
+
+/**
+想要将图片绘制出来，此时我们需要借助drawImage这个API。
+这个API有三种形式的传参
+
+第1种:drawImage(image, x, y)
+image: 绘制的图像源
+x, y:  图像在画布上的起始坐标(x,y), 图像将以原始尺寸绘制
+
+第2种:drawImage(image, x, y, width, height)
+image: 绘制的图像源
+x, y:  图像在画布上的起始坐标(x,y)
+width, height(可选)：绘制到画布上的图像的宽度和高度
+
+第3种: drawImage(image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight)
+image： 绘制的图像源
+sx, sy: 图像源中矩形区域的起始坐标
+swidth, sheight：图像源中矩形区域的宽度和高度，即要绘制的图像部分
+dx, dy：绘制到画布上的起始坐标
+dwidth, dheight：绘制到画布上的矩形区域的宽度和高度，允许对绘制的图像进行缩放
+
+也就是说:我们这里绘制可以使用第1种方法和第2种方法。
+图像源在getImageWH 这个方法中返回来。
+
+ */
 </script>
 
 <style lang="scss" scoped>

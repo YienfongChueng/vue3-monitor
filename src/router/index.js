@@ -35,7 +35,14 @@ export const constantRoutes = [
                 name: 'screnShotImg',
                 meta: {title: 'canvas截图'},
                 component:()=> import('@/views/home/demo/screnShotImg.vue')
-            }
+            },
+            {
+                path: '/vitrualList',
+                name: 'vitrualList',
+                meta: {title: '虚拟列表'},
+                component:()=> import('@/views/home/demo/vitrualList.vue')
+            },
+
         ]
     },
 ]
