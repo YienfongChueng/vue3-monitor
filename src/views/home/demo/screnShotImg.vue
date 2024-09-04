@@ -5,6 +5,9 @@
     <canvas ref="canvas1" class="canvas-box p-10"></canvas>
     
     <el-button type="primary" @click="handleDownLoad">下载</el-button>
+    <el-button type="primary" @click="handleUpLoad">上传</el-button>
+
+    <!-- <img ref="imgRef" src="" alt="预览" /> -->
     
     <canvas ref="canvas2" class="canvas2-box p-10"></canvas>
 </template>
@@ -127,13 +130,33 @@ onMounted(() => {
     
      // 绘制一个截图区域的信息在另外一个画布上，并且将他显示出来
     function drawScreenShotImg(screenshotData){
-        // screenshotData是截图的开始和结束坐标
+        // 从画布获取图像数据 screenshotData是截图的开始和结束坐标
         let drawData = ctx.getImageData(...screenshotData)
         canvasSetWH(canvas2.value,screenshotData[2],screenshotData[3])
         // 先清空画布，注意清空的大小，否者会造成叠加（清除不干净）
         ctx2.clearRect(0,0, currentPoint.x, currentPoint.y)
         // 将截图区域绘制到canvas2上
         ctx2.putImageData(drawData,0,0)
+    }
+
+    let imgRef = ref()
+    // 上传
+    function handleUpLoad(){
+        // HTMLCanvasElement.toBlob() 方法创造 Blob 对象，用以展示 canvas 上的图片
+        canvas2.value.toBlob(blob => {
+            const file = new File([blob],'avater.png',{
+                type: fileType
+            })
+            // console.log('file:',file)
+            // const reader = new FileReader()
+            // reader.onload = function(e) {
+            //     // 截图后本地预览
+            //     imgRef.value.src = e.target.result
+            // }
+            // reader.readAsDataURL(file)
+            // 上传服务器逻辑
+            // todo
+        },fileType)
     }
     
     // 下载
@@ -150,6 +173,19 @@ onMounted(() => {
         document.body.removeChild(link);
     }
 
+
+/**
+ * FileReader实例方法
+ * FileReader.abort() 中止读取操作
+ * FileReader.readAsArrayBuffer() 开始读取指定的 Blob 中的内容
+ * FileReader.readAsDataURL() 开始读取指定的 Blob 中的内容
+ */
+
+/**
+ * Canvas API
+ * HTMLCanvasElement.toDataURL() 方法返回一个包含图片展示的 data URI
+ * HTMLCanvasElement.toBlob() 方法创造 Blob 对象，用以展示 canvas 上的图片
+ */
 </script>
 
 <style lang="scss" scoped>
