@@ -42,6 +42,12 @@ export const constantRoutes = [
                 meta: {title: '虚拟列表'},
                 component:()=> import('@/views/home/demo/vitrualList.vue')
             },
+            {
+                path: '/domToImage',
+                name: 'domToImage',
+                meta: {title: '复制网页成图片'},
+                component:()=> import('@/views/home/demo/domToImage.vue')
+            },
 
         ]
     },
