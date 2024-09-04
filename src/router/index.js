@@ -4,6 +4,41 @@ import { usePermissionStore } from '@/store/permission'
 import { findModulesByUid } from '@/api/modules/user'
 import { initRoutes } from '@/utils'
 
+
+export const constantRoutes = [
+    {
+        path: '/layout1',
+        name:'layout1',
+        component: ()=>import('@/layout/index.vue'),
+        children:[
+            {
+                path: '/map1',
+                name: 'map1',
+                meta: {title: 'map1',},
+                component:()=> import('@/views/home/mapLocation/index1.vue')
+            },
+            {
+                path: '/map2',
+                name: 'map2',
+                meta: {title: 'map2',},
+                component:()=> import('@/views/home/mapLocation/index2.vue')
+            },
+            {
+                path: '/map3',
+                name: 'map3',
+                meta: {title: 'map3',},
+                component:()=> import('@/views/home/mapLocation/index3.vue')
+            },
+            {
+                path: '/screnShotImg',
+                name: 'screnShotImg',
+                meta: {title: 'canvas截图'},
+                component:()=> import('@/views/home/demo/screnShotImg.vue')
+            }
+        ]
+    },
+]
+
 export const routes = [
     {
         path: '/',
@@ -27,29 +62,9 @@ export const routes = [
         redirect: '/index',
         children:[]
     },
-    {
-        path: '/layout1',
-        name:'layout1',
-        component: ()=>import('@/layout/index.vue'),
-        children:[
-            {
-                path: '/map1',
-                name: 'map1',
-                component:()=> import('@/views/home/mapLocation/index1.vue')
-            },
-            {
-                path: '/map2',
-                name: 'map2',
-                component:()=> import('@/views/home/mapLocation/index2.vue')
-            },
-            {
-                path: '/map3',
-                name: 'map3',
-                component:()=> import('@/views/home/mapLocation/index3.vue')
-            }
-        ]
-    },
+    ...constantRoutes
 ]
+
 
 const router = createRouter({
     routes,

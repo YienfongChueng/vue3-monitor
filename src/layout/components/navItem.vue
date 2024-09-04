@@ -2,14 +2,14 @@
     <!-- 无子级 -->
     <el-menu-item :index="item.path" v-if="!item.children" @click="addTag(item)">
         <!-- <el-icon><Menu /></el-icon> -->
-        <i class="iconfont" :class="item.meta.icon"></i>
-        <span>{{item.meta.title}}</span>
+        <i class="iconfont" :class="item?.meta?.icon"></i>
+        <span>{{item?.meta?.title}}</span>
     </el-menu-item>
     <!-- 有子级 -->
     <el-sub-menu :index="item.path" v-else>
         <template #title>
-            <i class="iconfont" :class="item.meta.icon"></i>
-            <span>{{item.meta.title}}</span>
+            <i class="iconfont" :class="item?.meta?.icon"></i>
+            <span>{{item?.meta?.title}}</span>
         </template>
         <navItem v-for="sub in item.children" :key="sub.path" :item="sub"></navItem>
     </el-sub-menu>

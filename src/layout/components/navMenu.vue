@@ -16,10 +16,12 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePermissionStore } from '@/store/permission'
 import { navItem } from '.'
+import { constantRoutes } from '@/router'
 const route = useRoute()
 const permissionStore = usePermissionStore()
 const navList = ref([])
-navList.value = permissionStore.routes
+const constantsRoutes = constantRoutes[0].children
+navList.value = [...permissionStore.routes,...constantsRoutes]
 
 const handleOpen = ()=> {
     console.log("handleOpen")
