@@ -60,6 +60,12 @@ export const constantRoutes = [
                 meta: {title: 'webWorker'},
                 component:()=> import('@/views/home/demo/webWorker.vue')
             },
+            {
+                path: '/domToImage',
+                name: 'domToImage',
+                meta: {title: '复制网页成图片'},
+                component:()=> import('@/views/home/demo/domToImage.vue')
+            },
 
         ]
     },
