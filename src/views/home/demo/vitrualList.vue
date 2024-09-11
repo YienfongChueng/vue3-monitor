@@ -71,10 +71,10 @@ const getTransform = computed(() => `translate(0,${startOffset.value}px)`)
 onMounted(() => {
     visibleInfo.height = containerRef.value.clientHeight
     phantomHeight.value = listData.value.length * itemHeight.value
-    visibleInfo.count = Math.ceil(visibleInfo.height / itemHeight.value)
+    // visibleInfo.count = Math.ceil(visibleInfo.height / itemHeight.value)
     visibleInfo.startIndex = 0
-    visibleInfo.endIndex = visibleInfo.startIndex + visibleInfo.count
-    // visibleInfo.endIndex = visibleInfo.startIndex + visibleCount.value
+    // visibleInfo.endIndex = visibleInfo.startIndex + visibleInfo.count
+    visibleInfo.endIndex = visibleInfo.startIndex + visibleCount.value
 })
 
 // 监听可视区滚动事件
@@ -83,8 +83,8 @@ const scrollEvent = throttle((e)=> {
     // 为什么是floor：floor是向下取整 取整数部分 确保每个子项完整滚动
     visibleInfo.startIndex = Math.floor(scrollTop / itemHeight.value)
     visibleInfo.endIndex = visibleInfo.startIndex + visibleCount.value
-    // startOffset.value = visibleInfo.startIndex * itemHeight.value
-    getOffsetY()
+    startOffset.value = visibleInfo.startIndex * itemHeight.value
+    // getOffsetY()
 }, 100)
 
 

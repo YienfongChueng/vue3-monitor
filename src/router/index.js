@@ -42,6 +42,24 @@ export const constantRoutes = [
                 meta: {title: '虚拟列表'},
                 component:()=> import('@/views/home/demo/vitrualList.vue')
             },
+            {
+                path: '/imgLazyLoad',
+                name: 'imgLazyLoad',
+                meta: {title: '图片懒加载'},
+                component:()=> import('@/views/home/demo/imgLazyLoad.vue')
+            },
+            {
+                path: '/queue',
+                name: 'queue',
+                meta: {title: '并发请求'},
+                component:()=> import('@/views/home/demo/queue.vue')
+            },
+            {
+                path: '/webWorker',
+                name: 'webWorker',
+                meta: {title: 'webWorker'},
+                component:()=> import('@/views/home/demo/webWorker.vue')
+            },
 
         ]
     },

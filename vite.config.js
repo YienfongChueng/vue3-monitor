@@ -38,4 +38,21 @@ export default defineConfig({
     //   autoInstall: true,
     // }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        chunkFileNames: "static/js/[name]-[hash].js",
+        entryFileNames: "static/js/[name]-[hash].js",
+        assetFileNames: "static/[ext]/[name]-[hash].[ext]",
+        // 确保worker文件被正确打包
+        // assetFileNames: (assetInfo) => {
+        //   console.log("===assetInfo===",assetInfo)
+        //   if (assetInfo.name.endsWith('worker.js')) {
+        //     return assetInfo.name;
+        //   }
+        //   return `${assetInfo.name}.${assetInfo.ext}`;
+        // },
+      },
+    },
+  }
 })
